@@ -2,8 +2,11 @@
 <h1>Cocktails</h1>
   <div class="row">
     <% @cocktails.each do |cocktail| %>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/300059/pexels-photo-300059.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'); background-size: cover">
+          <% if cocktail.photo? %>
+            <%= cl_image_tag cocktail.photo.path, width: 200, height: 200, crop: :fill %>
+          <% end %>
           <h2><%= link_to cocktail.name.capitalize, cocktail_path(cocktail) %></h2>
         </div>
       </div>
