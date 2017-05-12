@@ -9,23 +9,25 @@
     <p><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to "❌", dose_path(dose), method: :delete %></p>
   <% end %>
   <hr>
-  <h3>Reviews</h3>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <% @cocktail.reviews.each do |review| %>
-        <blockquote>
-         <p><%= review.content %></p>
-          <small><%= review.author %></small>
-        </blockquote>
-      <% end %>
-      <hr>
-      <p><b>ADD YOUR REVIEW !</b></p>
-      <hr>
-      <%= simple_form_for [@cocktail, @review] do |f| %>
-        <%= f.input :author %>
-        <%= f.input :content %>
-        <%= f.button :submit %>
-      <% end %>
+  <div class="review">
+    <h3>Reviews</h3>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <% @cocktail.reviews.each do |review| %>
+          <blockquote>
+           <p><%= review.content %></p>
+            <small><%= review.author %></small>
+          </blockquote>
+        <% end %>
+        <hr>
+        <p><b>ADD YOUR REVIEW !</b></p>
+        <hr>
+        <%= simple_form_for [@cocktail, @review] do |f| %>
+          <%= f.input :author %>
+          <%= f.input :content %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 
