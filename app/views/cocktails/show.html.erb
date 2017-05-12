@@ -1,5 +1,9 @@
 <div class="container text-center">
   <h2><%= @cocktail.name.capitalize %></h2>
+  <p><%= link_to "edit", edit_cocktail_path(@cocktail) %></p>
+  <% if @cocktail.photo? %>
+    <%= cl_image_tag @cocktail.photo.path, width: 200 %>
+  <% end %>
   <h3><%= link_to "Add dose", new_cocktail_dose_path(@cocktail), class: "btn btn-default" %></h3>
   <% @cocktail.doses.each do |dose| %>
     <p><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to "❌", dose_path(dose), method: :delete %></p>
